@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_car_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_car_list.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_tariff.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_tariff.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_rent_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_rent_list.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_add_rent_form.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_add_rent_form.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_activity_hub.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_activity_hub.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_rent.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_rent.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_my_bg.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/my_bg.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_back.jpg.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/back.jpg"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_tariff_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_tariff_list.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_clients_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_clients_list.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/navigation_nav_graph.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_activity_main.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_pic.png.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/pic.png"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_activity_rent_car.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/activity_rent_car.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_car.png.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/car.png"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_road.jpg.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/road.jpg"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_brand.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_brand.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_client.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_client.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_brand_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_brand_list.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/drawable_car1.png.flat",
+        "source": "com.example.myapp2.app-main-53:/drawable/car1.png"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_car.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_car.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.myapp2.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/xml_backup_rules.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_add_client_form.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_add_client_form.xml"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/font_merriweatherblack.ttf.flat",
+        "source": "com.example.myapp2.app-main-53:/font/merriweatherblack.ttf"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/font_jetbrainsmonoitalic.ttf.flat",
+        "source": "com.example.myapp2.app-main-53:/font/jetbrainsmonoitalic.ttf"
+    }
+]

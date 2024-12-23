@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My App2</string>
+    <string name="welcome_title">Насладись свободой передвижения!</string>
+    <string name="button_text">Арендовать машину</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ALO">АЛО</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="punishments">Нарушения</string>
+    <string name="cars">Машины</string>
+    <string name="tariffs">Тарифы</string>
+    <string name="clients">Клиенты</string>
+</resources>

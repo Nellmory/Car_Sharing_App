@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".rent.AddRentForm">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/merriweatherblack"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:text="Введите данные аренды" />
+
+    <EditText
+        android:id="@+id/editTextStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Дата начала dd.mm.yyyy" />
+
+    <EditText
+        android:id="@+id/editTextFinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Дата окончания dd.mm.yyyy" />
+
+    <EditText
+        android:id="@+id/editTextTariff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID Тарифа" />
+
+    <EditText
+        android:id="@+id/editTextCarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID Машины" />
+
+    <EditText
+        android:id="@+id/editTextClientId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID Клиента" />
+
+    <Button
+        android:id="@+id/addRentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#80000000"
+        android:fontFamily="@font/merriweatherblack"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cornerRadius="7dp"
+        android:text="Добавить аренду"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        />
+
+</LinearLayout>
