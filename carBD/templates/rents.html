@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rents</title>
+</head>
+<body>
+    <h1>Rents</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Start Date</th>
+            <th>Finish Date</th>
+            <th>Tariff</th>
+            <th>Car</th>
+            <th>Client</th>
+            <th>Actions</th>
+        </tr>
+        {% for rent in rents %}
+        <tr>
+            <td>{{ rent.id }}</td>
+            <td>{{ rent.start_date }}</td>
+            <td>{{ rent.finish_date }}</td>
+            <td>{{ rent.tariff }}</td>
+            <td>{{ rent.car_id }}</td>
+            <td>{{ rent.client_id }}</td>
+            <td>
+                <a href="/edit_rent/{{ rent.id }}">Edit</a>
+                <form action="/delete_rent/{{ rent.id }}" method="post" style="display:inline;">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+
+    <h2>Add New Rent</h2>
+    <form action="/add_rent" method="post">
+        <label for="start_date">Start Date:</label>
+        <input type="datetime-local" id="start_date" name="start_date" required><br><br>
+        <label for="finish_date">Finish Date:</label>
+        <input type="datetime-local" id="finish_date" name="finish_date" required><br><br>
+        <label for="tariff_id">Tariff:</label>
+        <select id="tariff_id" name="tariff_id" required>
+            {% for tariff in tariffs %}
+            <option value="{{ tariff.id }}">{{ tariff.description }} - ${{ tariff.cost }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="car_id">Car:</label>
+        <select id="car_id" name="car_id" required>
+            {% for car in cars %}
+            <option value="{{ car.id }}">{{ car.vin_num }} - {{ car.license_plate }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="client_id">Client:</label>
+        <select id="client_id" name="client_id" required>
+            {% for client in clients %}
+            <option value="{{ client.id }}">{{ client.name }} {{ client.surname }} - {{ client.telephone }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Add Rent">
+    </form>
+</body>
+</html>

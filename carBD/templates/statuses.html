@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands</title>
+</head>
+<body>
+    <h1>Brands</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Country</th>
+        </tr>
+        {% for brand in brands %}
+        <tr>
+            <td>{{ brand.id }}</td>
+            <td>{{ brand.brand_name }}</td>
+            <td>{{ brand.country }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

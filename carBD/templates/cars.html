@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+</head>
+<body>
+    <h1>Cars</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>VIN Number</th>
+            <th>License Plate</th>
+            <th>Model ID</th>
+            <th>Colour</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.id }}</td>
+            <td>{{ car.vin_num }}</td>
+            <td>{{ car.license_plate }}</td>
+            <td>{{ car.model_id }}</td>
+            <td>{{ car.colour }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>
