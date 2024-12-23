@@ -124,6 +124,15 @@ def brands():
     return jsonify(brands_list)
 
 
+@app.route('/models')
+def models():
+    session = db_session()
+    models = session.query(ModelModel).all()
+    session.close()
+    models_list = [{'id': model.id, 'brand_id': model.brand_id, 'model_name': model.model_name} for model in models]
+    return jsonify(models_list)
+
+
 @app.route('/statuses')
 def statuses():
     session = db_session()
@@ -131,6 +140,15 @@ def statuses():
     session.close()
     statuses_list = [{'id': status.id, 'status': status.status} for status in statuses]
     return jsonify(statuses_list)
+
+
+@app.route('/paying_methods')
+def paying_methods():
+    session = db_session()
+    methods = session.query(MethodModel).all()
+    session.close()
+    methods_list = [{'id': method.id, 'method': method.method} for method in methods]
+    return jsonify(methods_list)
 
 
 @app.route('/clients')
@@ -215,14 +233,25 @@ def payments():
     return jsonify(payments_list)
 
 
-@app.route('/payments')
-def payments():
+@app.route('/rent_violation')
+def rent_violation():
     session = db_session()
-    payments = session.query(PaymentModel).all()
+    rent_violations = session.query(RentViolationModel).all()
     session.close()
-    payments_list = [{'id': payment.id, 'date': payment.date, 'rent_id': payment.rent_id,
-                      'method_id': payment.method_id, 'status_id': payment.status_id} for payment in payments]
-    return jsonify(payments_list)
+    rent_violations_list = [{'rent_id': rent_viol.rent_id,
+                             'violation_id': rent_viol.violation_id} for rent_viol in rent_violations]
+    return jsonify(rent_violations_list)
+
+
+@app.route('/violations')
+def violations():
+    session = db_session()
+    violations = session.query(ViolationModel).all()
+    session.close()
+    violations_list = [{'id': violation.id, 'description': violation.description, 'date': violation.date,
+                        'fine': violation.fine, 'client_id': violation.client_id} for violation in violations]
+    return jsonify(violations_list)
+
 
 @app.route('/rents')
 def rents():
