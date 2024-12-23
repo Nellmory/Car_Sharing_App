@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@android:color/background_dark"
     android:padding="16dp"
     tools:context=".car.CarList">
 
@@ -22,9 +23,10 @@
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="25dp"
+        android:layout_marginTop="10dp"
         app:strokeColor="@color/white"
         app:strokeWidth="2dp"
-        app:cornerRadius="0dp"
+        app:cornerRadius="7dp"
         app:layout_constraintBottom_toTopOf="@id/recyclerViewClients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

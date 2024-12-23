@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@android:color/darker_gray"
     tools:context=".car.CarList">
 
     <TextView
@@ -11,34 +12,39 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Id" />
+        android:text="Id"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textVinNum"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Vin Num" />
+        android:text="Vin Num"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textLicensePlate"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="License Plate" />
+        android:text="License Plate"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textModelId"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Model id" />
+        android:text="Model id"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textColour"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Colour" />
+        android:text="Colour"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
