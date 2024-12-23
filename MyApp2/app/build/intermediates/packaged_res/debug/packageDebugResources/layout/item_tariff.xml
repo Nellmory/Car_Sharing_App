@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@android:color/darker_gray"
     tools:context=".tariff.TariffList">
 
     <TextView
@@ -11,20 +12,23 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Id" />
+        android:text="Id"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textDescription"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Name" />
+        android:text="Name"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textCost"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Surname" />
+        android:text="Surname"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

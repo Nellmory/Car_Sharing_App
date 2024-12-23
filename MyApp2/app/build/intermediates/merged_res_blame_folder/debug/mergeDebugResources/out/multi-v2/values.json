@@ -4,6 +4,23 @@
             "outputFile": "com.example.myapp2.app-mergeDebugResources-49:/values/values.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\CarSharing\\MyApp2\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,97",
+                        "endColumns": "41,41",
+                        "endOffsets": "92,134"
+                    },
+                    "to": {
+                        "startLines": "648,968",
+                        "startColumns": "4,4",
+                        "startOffsets": "33134,56901",
+                        "endColumns": "41,41",
+                        "endOffsets": "33171,56938"
+                    }
+                },
+                {
                     "source": "C:\\Users\\agapo\\.gradle\\caches\\8.9\\transforms\\c314e899a67037189eb95be4c193592e\\transformed\\lifecycle-viewmodel-release\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -73,23 +90,6 @@
                         "startOffsets": "55406,117303,117356,117409,117462,427052,427228,427350,427612,427807",
                         "endColumns": "88,52,52,52,52,65,121,60,65,66",
                         "endOffsets": "55490,117351,117404,117457,117510,427113,427345,427406,427673,427869"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\MyApp2\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "5,1,3,9,11,7,8,10,2",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "252,16,136,466,549,346,416,506,61",
-                        "endColumns": "35,44,57,39,43,69,49,42,74",
-                        "endOffsets": "283,56,189,501,588,411,461,544,131"
-                    },
-                    "to": {
-                        "startLines": "1961,1990,1998,2006,2011,2020,2137,2147,2148",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "129527,131512,132796,133365,133782,134511,151441,152471,152514",
-                        "endColumns": "35,44,57,39,43,69,49,42,74",
-                        "endOffsets": "129558,131552,132849,133400,133821,134576,151486,152509,152584"
                     }
                 },
                 {
@@ -181,6 +181,25 @@
                         "startOffsets": "124470",
                         "endColumns": "53",
                         "endOffsets": "124519"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\CarSharing\\MyApp2\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "100,321",
+                        "endLines": "5,7",
+                        "endColumns": "12,60",
+                        "endOffsets": "315,377"
+                    },
+                    "to": {
+                        "startLines": "2575,6554",
+                        "startColumns": "4,4",
+                        "startOffsets": "180706,459727",
+                        "endLines": "2578,6554",
+                        "endColumns": "12,59",
+                        "endOffsets": "180815,459782"
                     }
                 },
                 {
@@ -332,42 +351,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\MyApp2\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2,7",
-                        "startColumns": "4,4",
-                        "startOffsets": "100,321",
-                        "endLines": "5,7",
-                        "endColumns": "12,60",
-                        "endOffsets": "315,377"
-                    },
-                    "to": {
-                        "startLines": "2575,6554",
-                        "startColumns": "4,4",
-                        "startOffsets": "180706,459727",
-                        "endLines": "2578,6554",
-                        "endColumns": "12,59",
-                        "endOffsets": "180815,459782"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\MyApp2\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,97",
-                        "endColumns": "41,41",
-                        "endOffsets": "92,134"
-                    },
-                    "to": {
-                        "startLines": "648,968",
-                        "startColumns": "4,4",
-                        "startOffsets": "33134,56901",
-                        "endColumns": "41,41",
-                        "endOffsets": "33171,56938"
-                    }
-                },
-                {
                     "source": "C:\\Users\\agapo\\.gradle\\caches\\8.9\\transforms\\03ba548cb25de26ac9148810f2dee4ff\\transformed\\navigation-ui-2.8.3\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -382,6 +365,23 @@
                         "startOffsets": "124952,133826,150476,150552",
                         "endColumns": "52,56,75,86",
                         "endOffsets": "125000,133878,150547,150634"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\agapo\\AndroidStudioProjects\\CarSharing\\MyApp2\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "5,1,3,9,11,7,8,10,2",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "252,16,136,466,549,346,416,506,61",
+                        "endColumns": "35,44,57,39,43,69,49,42,74",
+                        "endOffsets": "283,56,189,501,588,411,461,544,131"
+                    },
+                    "to": {
+                        "startLines": "1961,1990,1998,2006,2011,2020,2137,2147,2148",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "129527,131512,132796,133365,133782,134511,151441,152471,152514",
+                        "endColumns": "35,44,57,39,43,69,49,42,74",
+                        "endOffsets": "129558,131552,132849,133400,133821,134576,151486,152509,152584"
                     }
                 },
                 {

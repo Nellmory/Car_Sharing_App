@@ -8,6 +8,8 @@ drawable car1
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable my_bg
+drawable new_icon
+drawable new_icon_background
 drawable pic
 drawable road
 font jetbrainsmonoitalic
@@ -105,6 +107,9 @@ layout item_rent
 layout item_tariff
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap new_icon
+mipmap new_icon_foreground
+mipmap new_icon_round
 navigation nav_graph
 string ALO
 string app_name

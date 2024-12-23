@@ -45,10 +45,10 @@ com.example.myapp2.app-lifecycle-livedata-2.8.7-43 C:\Users\agapo\.gradle\caches
 com.example.myapp2.app-cardview-1.0.0-44 C:\Users\agapo\.gradle\caches\8.9\transforms\ecc9273e02c6c8990c26a2a46ac16f74\transformed\cardview-1.0.0\res
 com.example.myapp2.app-navigation-ui-ktx-2.8.3-45 C:\Users\agapo\.gradle\caches\8.9\transforms\ed358b121740c6046f4e0154bdc6cfd5\transformed\navigation-ui-ktx-2.8.3\res
 com.example.myapp2.app-constraintlayout-2.1.4-46 C:\Users\agapo\.gradle\caches\8.9\transforms\f2a59c2fd864bd8cb7d11ff78359b40b\transformed\constraintlayout-2.1.4\res
-com.example.myapp2.app-pngs-47 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\build\generated\res\pngs\debug
-com.example.myapp2.app-resValues-48 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\build\generated\res\resValues\debug
-com.example.myapp2.app-packageDebugResources-49 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.myapp2.app-packageDebugResources-50 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.myapp2.app-debug-51 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.myapp2.app-debug-52 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\src\debug\res
-com.example.myapp2.app-main-53 C:\Users\agapo\AndroidStudioProjects\MyApp2\app\src\main\res
+com.example.myapp2.app-pngs-47 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\build\generated\res\pngs\debug
+com.example.myapp2.app-resValues-48 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\build\generated\res\resValues\debug
+com.example.myapp2.app-packageDebugResources-49 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.myapp2.app-packageDebugResources-50 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.myapp2.app-debug-51 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.myapp2.app-debug-52 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\src\debug\res
+com.example.myapp2.app-main-53 C:\Users\agapo\AndroidStudioProjects\CarSharing\MyApp2\app\src\main\res
