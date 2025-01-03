@@ -8,24 +8,12 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxxhdpi\\new_icon.webp"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxxhdpi_new_icon_round.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxxhdpi/new_icon_round.webp"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-hdpi_new_icon_round.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-hdpi/new_icon_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxhdpi_new_icon_foreground.webp.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxhdpi\\new_icon_foreground.webp"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_client.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_client.xml"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxhdpi_new_icon_foreground.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxhdpi/new_icon_foreground.webp"
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxhdpi_new_icon_foreground.webp.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxhdpi\\new_icon_foreground.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
@@ -38,10 +26,6 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-hdpi_new_icon_foreground.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-hdpi\\new_icon_foreground.webp"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xhdpi_new_icon_round.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xhdpi/new_icon_round.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -60,24 +44,12 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\car1.png"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xhdpi_new_icon_foreground.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xhdpi/new_icon_foreground.webp"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_activity_rent_car.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\activity_rent_car.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-hdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxhdpi_new_icon.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxhdpi/new_icon.webp"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-mdpi_new_icon_foreground.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-mdpi/new_icon_foreground.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-hdpi_new_icon.webp.flat",
@@ -98,10 +70,6 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-mdpi_new_icon_round.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-mdpi/new_icon_round.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxhdpi_new_icon_round.webp.flat",
@@ -132,10 +100,6 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xhdpi\\new_icon.webp"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-mdpi_new_icon.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-mdpi/new_icon.webp"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_tariff_list.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\fragment_tariff_list.xml"
     },
@@ -148,16 +112,8 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_rent.xml"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xhdpi_new_icon.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xhdpi/new_icon.webp"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_new_icon_background.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\new_icon_background.xml"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxxhdpi_new_icon.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxxhdpi/new_icon.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_car_list.xml.flat",
@@ -180,12 +136,12 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\road.jpg"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_clients_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_clients_list.xml"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxxhdpi_new_icon_foreground.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxxhdpi/new_icon_foreground.webp"
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\xml_backup_rules.xml.flat",
@@ -202,14 +158,6 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_back.jpg.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\back.jpg"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-hdpi_new_icon_foreground.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-hdpi/new_icon_foreground.webp"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-hdpi_new_icon.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-hdpi/new_icon.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -262,10 +210,6 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_brand.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_brand.xml"
-    },
-    {
-        "merged": "com.example.myapp2.app-debug-51:/mipmap-xxhdpi_new_icon_round.webp.flat",
-        "source": "com.example.myapp2.app-main-53:/mipmap-xxhdpi/new_icon_round.webp"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_rent_list.xml.flat",

@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session, as_declarative, relationship, scoped_session
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from datetime import datetime
 from markupsafe import escape
+from sqlalchemy_pagination import paginate
+import pdb
 
 engine = create_engine("sqlite:///carDB.db", echo=False)
 app = Flask(__name__)
@@ -151,14 +153,27 @@ def paying_methods():
     return jsonify(methods_list)
 
 
-@app.route('/clients')
+@app.route('/clients', methods=['GET'])
 def clients():
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
+
     session = db_session()
-    clients = session.query(ClientModel).all()
+    clients = session.query(ClientModel)
+    paginated_clients = paginate(clients, page, per_page)
     session.close()
+
     clients_list = [{'id': client.id, 'name': client.name, 'surname': client.surname, 'telephone': client.telephone} for
-                    client in clients]
-    return jsonify(clients_list)
+                    client in paginated_clients.items]
+
+    result = {
+        'clients': clients_list,
+        'total_pages': paginated_clients.pages,
+        'current_page': page,
+        'has_next': paginated_clients.has_next,
+        'has_prev': paginated_clients.has_previous
+    }
+    return jsonify(result)
 
 
 @app.route('/add_client', methods=['POST'])

@@ -4,6 +4,8 @@ from __main__ import (BrandModel, ModelModel, CarModel, StatusModel, MethodModel
                       ViolationModel, RentModel, PaymentModel, RentViolationModel)
 from datetime import datetime, timedelta
 
+clients_number = 50
+
 # БРЕНДЫ
 
 brand_names = [
@@ -137,7 +139,7 @@ surnames = [
 
 
 def generate_clients(session):
-    for _ in range(10):
+    for _ in range(clients_number):
         name = random.choice(names)
         surname = random.choice(surnames)
         telephone = '8' + ''.join(random.choices('0123456789', k=10))

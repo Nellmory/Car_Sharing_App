@@ -57,6 +57,7 @@ id goBack
 id goBackT
 id main
 id nav_graph
+id progressBar
 id recyclerView
 id recyclerViewBrands
 id recyclerViewClients

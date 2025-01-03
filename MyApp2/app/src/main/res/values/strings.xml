@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My App2</string>
+    <string name="app_name">CarSharing</string>
     <string name="welcome_title">Насладись свободой передвижения!</string>
     <string name="button_text">Арендовать машину</string>
     <!-- TODO: Remove or change this placeholder text -->

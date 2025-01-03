@@ -1,9 +1,11 @@
 package com.example.myapp2
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.HttpException
+import retrofit2.Response
 import retrofit2.await
 import retrofit2.awaitResponse
 import java.io.IOException
@@ -39,7 +41,7 @@ class TableAdapter {
         }
     }
 
-    suspend fun getClients(): List<Client> {
+    /*suspend fun getClients(): List<Client> {
         return withContext(Dispatchers.IO) {
             try {
                 apiService.getClients()
@@ -51,7 +53,27 @@ class TableAdapter {
                 emptyList()
             }
         }
+    }*/
+
+    suspend fun getClients(page: Int): ClientsResponse? {
+        Log.d("TableAdapter", "getClients() called. CurrentPage = $page")
+        return try {
+            val response: Response<ClientsResponse> = apiService.getClients(page)
+            Log.d("TableAdapter", "Response code: ${response.code()}")
+            Log.d("TableAdapter", "Response body: ${response.body()}")
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                Log.e("TableAdapter", "Error response: ${response.errorBody()?.string()}")
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("TableAdapter", "Exception: ${e.message}")
+            e.printStackTrace()
+            null
+        }
     }
+
 
     suspend fun getRents(): List<Rent> {
         return withContext(Dispatchers.IO) {
@@ -81,19 +103,46 @@ class TableAdapter {
         }
     }
 
-    suspend fun addClient(client: Client): Boolean {
+    /*suspend fun addClient(client: Client): Boolean {
         val result = apiService.addClient(client)
         return result.code() in 200..299
+    }*/
+    suspend fun addClient(client: Client): Boolean {
+        return try {
+            val response = apiService.addClient(client).execute()
+            response.isSuccessful
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
     }
 
-    suspend fun editClient(id: Int, client: Client): Boolean {
+    /*suspend fun editClient(id: Int, client: Client): Boolean {
         val result = apiService.updateClient(id, client)
         return result.code() in 200..299
+    }*/
+    suspend fun editClient(id: Int, client: Client): Boolean {
+        return try {
+            val response = apiService.editClient(id, client).execute()
+            response.isSuccessful
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
     }
 
-    suspend fun removeClient(id: Int): Boolean {
+    /*suspend fun removeClient(id: Int): Boolean {
         val result = apiService.deleteClient(id)
         return result.code() in 200..299
+    }*/
+    suspend fun removeClient(id: Int): Boolean {
+        return try {
+            val response = apiService.deleteClient(id).execute()
+            response.isSuccessful
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
     }
 
     suspend fun addRent(rent: Rent): Boolean {

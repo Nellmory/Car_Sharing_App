@@ -28,6 +28,14 @@ data class Client(
     val telephone: String
 )
 
+data class ClientsResponse(
+    val clients: List<Client>,
+    val total_pages: Int,
+    val current_page: Int,
+    val has_next: Boolean,
+    val has_prev: Boolean
+)
+
 data class Violation(
     val id: Int,
     val description: String,
