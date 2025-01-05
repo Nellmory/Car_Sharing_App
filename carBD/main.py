@@ -176,47 +176,88 @@ def clients():
     return jsonify(result)
 
 
+# @app.route('/add_client', methods=['POST'])
+# def add_client():
+#     name = escape(request.json['name'])
+#     surname = escape(request.json['surname'])
+#     telephone = escape(request.json['telephone'])
+#
+#     session = db_session()
+#     new_client = ClientModel(name=name, surname=surname, telephone=telephone)
+#     session.add(new_client)
+#     session.commit()
+#     session.close()
+#
+#     return jsonify({'message': 'Client added successfully'})
 @app.route('/add_client', methods=['POST'])
 def add_client():
-    name = escape(request.json['name'])
-    surname = escape(request.json['surname'])
-    telephone = escape(request.json['telephone'])
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Request body must be JSON'}), 400
+    try:
+      name = escape(data['name'])
+      surname = escape(data['surname'])
+      telephone = escape(data['telephone'])
+    except KeyError:
+        return jsonify({'error': 'Missing required fields'}), 400
 
     session = db_session()
-    new_client = ClientModel(name=name, surname=surname, telephone=telephone)
-    session.add(new_client)
-    session.commit()
-    session.close()
+    try:
+        new_client = ClientModel(name=name, surname=surname, telephone=telephone)
+        session.add(new_client)
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
+    finally:
+      session.close()
 
-    return jsonify({'message': 'Client added successfully'})
+    return jsonify({'message': 'Client added successfully'}), 201
 
 
 @app.route('/edit_client/<int:client_id>', methods=['PUT'])
 def edit_client(client_id):
-    name = escape(request.json['name'])
-    surname = escape(request.json['surname'])
-    telephone = escape(request.json['telephone'])
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Request body must be JSON'}), 400
+    try:
+      name = escape(data['name'])
+      surname = escape(data['surname'])
+      telephone = escape(data['telephone'])
+    except KeyError:
+        return jsonify({'error': 'Missing required fields'}), 400
 
     session = db_session()
-    client = session.query(ClientModel).get(client_id)
-    client.name = name
-    client.surname = surname
-    client.telephone = telephone
-    session.commit()
-    session.close()
+    try:
+        client = session.query(ClientModel).get(client_id)
+        client.name = name
+        client.surname = surname
+        client.telephone = telephone
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
+    finally:
+      session.close()
 
-    return jsonify({'message': 'Client edited successfully'})
+    return jsonify({'message': 'Client edited successfully'}), 201
 
 
 @app.route('/delete_client/<int:client_id>', methods=['DELETE'])
 def delete_client(client_id):
     session = db_session()
-    client = session.query(ClientModel).get(client_id)
-    session.delete(client)
-    session.commit()
-    session.close()
+    try:
+        client = session.query(ClientModel).get(client_id)
+        session.delete(client)
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to delete client: {str(e)}"}), 500
+    finally:
+      session.close()
 
-    return jsonify({'message': 'Client deleted successfully'})
+    return jsonify({'message': 'Client deleted successfully'}), 201
+
 
 
 @app.route('/tariffs')
@@ -338,11 +379,6 @@ def delete_rent(rent_id):
     session.close()
 
     return jsonify({'message': 'Rent deleted successfully'})
-
-
-@app.route('/test')
-def test():
-    return {"result": "success"}
 
 
 from generation import generation

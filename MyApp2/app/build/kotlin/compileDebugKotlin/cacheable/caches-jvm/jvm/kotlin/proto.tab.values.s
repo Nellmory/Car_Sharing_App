@@ -1,1 +1,1 @@
-şíkõl
+şíkõlÑnØlßlÏmÙmÇrórÎmılülÆp

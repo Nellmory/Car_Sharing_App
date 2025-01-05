@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp2.Client
+import com.example.myapp2.ClientsResponse
 import com.example.myapp2.R
 import com.example.myapp2.TableAdapter
 
@@ -66,8 +67,6 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
         clientAdapter.setOnSaveClick(this@ClientsList)
         recyclerView.adapter = clientAdapter
 
-        loadClients()
-
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -84,15 +83,6 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
             }
         })
 
-        /*vm.client.observe(viewLifecycleOwner) {
-            clientAdapter = ClientAdapter(it)
-            clientAdapter.setOnClickDB(this@ClientsList)
-            clientAdapter.setOnSaveClick(this@ClientsList)
-            recyclerView.adapter = clientAdapter
-        }
-
-        vm.updateList()*/
-
         addButton.setOnClickListener {
             findNavController().navigate(R.id.action_clientsList_to_addClientForm)
         }
@@ -100,43 +90,54 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_clientsList_to_activityHub)
         }
 
+        vm.clientsResponse.observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                updateRecyclerView(response)
+            }
+        }
+
         return view
     }
 
     private fun loadClients() {
+        Log.d("ClientsList", "loadClients() called. Current page: $currentPage") // Добавлен лог
         isLoading = true
         progressBar.visibility = View.VISIBLE
+        vm.getClients(currentPage)
+    }
 
-        vm.getClients(currentPage).observe(viewLifecycleOwner) { response ->
-            if (response != null) {
-                val newClients = response.clients
-                if (newClients.isEmpty()) {
-                    hasMoreData = false
-                } else {
-                    clientList.addAll(newClients)
-                    //Log.d("ClientsList", "ClientList size before notify: ${clientList.size}")
-                    clientAdapter.notifyDataSetChanged()
-                    currentPage++
-                    //Log.d("ClientsList", "Current page after update: $currentPage")
-                }
-                hasMoreData = response.has_next
-                Log.d("API", "Current page: " + response.current_page)
-                Log.d("API", "Total pages: " + response.total_pages)
-                Log.d("API", "Has next: " + response.has_next)
-                Log.d("API", "Has prev: " + response.has_prev)
-
-            }
-            isLoading = false
-            progressBar.visibility = View.GONE
+    private fun updateRecyclerView(response: ClientsResponse) {
+        Log.d("ClientsList", "updateRecyclerView() called. Current page: $currentPage")
+        val newClients = response.clients
+        if (newClients.isEmpty()) {
+            hasMoreData = false
+            Log.d("ClientsList", "No more data. hasMoreData = $hasMoreData")
+        } else {
+            clientList.addAll(newClients)
+            clientAdapter.notifyDataSetChanged()
+            currentPage++
+            Log.d("ClientsList", "Loaded new data, current page is incremented. Current page: $currentPage")
         }
+        hasMoreData = response.has_next
+        Log.d("API", "Current page: " + response.current_page)
+        Log.d("API", "Total pages: " + response.total_pages)
+        Log.d("API", "Has next: " + response.has_next)
+        Log.d("API", "Has prev: " + response.has_prev)
+
+        isLoading = false
+        progressBar.visibility = View.GONE
     }
 
     override fun onDeleteButtonClick(id: Int) {
         vm.removeClient(id)
+        clientList.clear()
+        currentPage = 1
     }
 
     override fun onSaveClick(id: Int, client: Client) {
         vm.editClient(id,client)
+        clientList.clear()
+        currentPage = 1
     }
 
     companion object {

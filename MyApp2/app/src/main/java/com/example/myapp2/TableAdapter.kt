@@ -41,26 +41,9 @@ class TableAdapter {
         }
     }
 
-    /*suspend fun getClients(): List<Client> {
-        return withContext(Dispatchers.IO) {
-            try {
-                apiService.getClients()
-            } catch (e: IOException) {
-                println("IOException, you might want to handle it: ${e.message}")
-                emptyList()
-            } catch (e: HttpException) {
-                println("HttpException, unexpected response: ${e.message}")
-                emptyList()
-            }
-        }
-    }*/
-
     suspend fun getClients(page: Int): ClientsResponse? {
-        Log.d("TableAdapter", "getClients() called. CurrentPage = $page")
         return try {
             val response: Response<ClientsResponse> = apiService.getClients(page)
-            Log.d("TableAdapter", "Response code: ${response.code()}")
-            Log.d("TableAdapter", "Response body: ${response.body()}")
             if (response.isSuccessful) {
                 response.body()
             } else {
@@ -103,44 +86,53 @@ class TableAdapter {
         }
     }
 
-    /*suspend fun addClient(client: Client): Boolean {
-        val result = apiService.addClient(client)
-        return result.code() in 200..299
-    }*/
     suspend fun addClient(client: Client): Boolean {
         return try {
-            val response = apiService.addClient(client).execute()
-            response.isSuccessful
+            val response = apiService.addClient(client)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Client added successfully: ${response.code()}")
+                true
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                Log.e("TableAdapter", "Failed to add client: ${response.code()} $errorMessage")
+                false
+            }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("TableAdapter", "Exception during add client: ${e.message}")
             false
         }
     }
 
-    /*suspend fun editClient(id: Int, client: Client): Boolean {
-        val result = apiService.updateClient(id, client)
-        return result.code() in 200..299
-    }*/
     suspend fun editClient(id: Int, client: Client): Boolean {
         return try {
-            val response = apiService.editClient(id, client).execute()
-            response.isSuccessful
+            val response = apiService.editClient(id, client)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Client edited successfully: ${response.code()}")
+                true
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                Log.e("TableAdapter", "Failed to edit client: ${response.code()} $errorMessage")
+                false
+            }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("TableAdapter", "Exception during edit client: ${e.message}")
             false
         }
     }
 
-    /*suspend fun removeClient(id: Int): Boolean {
-        val result = apiService.deleteClient(id)
-        return result.code() in 200..299
-    }*/
     suspend fun removeClient(id: Int): Boolean {
         return try {
-            val response = apiService.deleteClient(id).execute()
-            response.isSuccessful
+            val response = apiService.deleteClient(id)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Client removed successfully: ${response.code()}")
+                true
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                Log.e("TableAdapter", "Failed to remove client: ${response.code()} $errorMessage")
+                false
+            }
         } catch (e: Exception) {
-            e.printStackTrace()
+            Log.e("TableAdapter", "Exception during remove client: ${e.message}")
             false
         }
     }

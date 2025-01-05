@@ -1,5 +1,6 @@
 package com.example.myapp2
 
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -13,9 +14,6 @@ import retrofit2.http.Query
 interface ApiService {
 
     //ПОЛУЧЕНИЕ
-
-    @GET("/test")
-    fun hello(): Call<TestResponse>
 
     @GET("brands")
     suspend fun getBrands(): List<Brand>
@@ -36,8 +34,7 @@ interface ApiService {
     //ДОБАВЛЕНИЕ
 
     @POST("add_client")
-    //suspend fun addClient(@Body client: Client): Response<Client>
-    fun addClient(@Body client: Client): Call<Void>
+    suspend fun addClient(@Body client: Client): Response<ResponseBody>
 
     @POST("add_rent")
     suspend fun addRent(@Body rent: Rent): Response<Rent>
@@ -48,8 +45,7 @@ interface ApiService {
     suspend fun deleteRent(@Path("id") id: Int): Response<Void>
 
     @DELETE("/delete_client/{id}")
-    //suspend fun deleteClient(@Path("id") id: Int): Response<Void>
-    fun deleteClient(@Path("id") id: Int): Call<Void>
+    suspend fun deleteClient(@Path("id") id: Int): Response<ResponseBody>
 
     //ОБНОВЛЕНИЕ
 
@@ -57,6 +53,5 @@ interface ApiService {
     suspend fun updateRent(@Path("id") id: Int, @Body rent: Rent): Response<Rent>
 
     @PUT("edit_client/{id}")
-    //suspend fun updateClient(@Path("id") id: Int, @Body client: Client): Response<Client>
-    fun editClient(@Path("id") id: Int, @Body client: Client): Call<Void>
+    suspend fun editClient(@Path("id") id: Int, @Body client: Client): Response<ResponseBody>
 }
