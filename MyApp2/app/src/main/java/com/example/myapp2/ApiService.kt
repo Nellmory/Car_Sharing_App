@@ -19,7 +19,6 @@ interface ApiService {
     suspend fun getBrands(): List<Brand>
 
     @GET("clients")
-    //suspend fun getClients(): List<Client>
     suspend fun getClients(@Query("page") page: Int, @Query("per_page") perPage: Int = 10): Response<ClientsResponse>
 
     @GET("tariffs")
@@ -30,6 +29,12 @@ interface ApiService {
 
     @GET("rents")
     suspend fun getRents(): List<Rent>
+
+    @GET("violations")
+    suspend fun getViolations(): List<Violation>
+
+    @GET("rent_violation")
+    suspend fun getRentViolations(): List<RentViolation>
 
     //ДОБАВЛЕНИЕ
 

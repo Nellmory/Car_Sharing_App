@@ -44,6 +44,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_activityHub_to_violationsList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -78,6 +83,15 @@
                             <option name="x" value="-154" />
                             <option name="y" value="-258" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_addRentForm_to_rentList">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -166,7 +180,24 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_rentList_to_addRentForm">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="rentViolationList">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-144" />
+                            <option name="y" value="190" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -183,6 +214,27 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_tariffList_to_activityHub">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="violationsList">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-7" />
+                            <option name="y" value="477" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_violationsList_to_activityHub">
                               <value>
                                 <LayoutPositions />
                               </value>

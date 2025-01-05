@@ -175,20 +175,6 @@ def clients():
     }
     return jsonify(result)
 
-
-# @app.route('/add_client', methods=['POST'])
-# def add_client():
-#     name = escape(request.json['name'])
-#     surname = escape(request.json['surname'])
-#     telephone = escape(request.json['telephone'])
-#
-#     session = db_session()
-#     new_client = ClientModel(name=name, surname=surname, telephone=telephone)
-#     session.add(new_client)
-#     session.commit()
-#     session.close()
-#
-#     return jsonify({'message': 'Client added successfully'})
 @app.route('/add_client', methods=['POST'])
 def add_client():
     data = request.get_json()

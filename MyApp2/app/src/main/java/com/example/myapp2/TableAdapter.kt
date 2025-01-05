@@ -3,11 +3,8 @@ package com.example.myapp2
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Call
 import retrofit2.HttpException
 import retrofit2.Response
-import retrofit2.await
-import retrofit2.awaitResponse
 import java.io.IOException
 
 class TableAdapter {
@@ -31,6 +28,34 @@ class TableAdapter {
         return withContext(Dispatchers.IO) {
             try {
                 apiService.getTariffs()
+            } catch (e: IOException) {
+                println("IOException, you might want to handle it: \${e.message}")
+                emptyList()
+            } catch (e: HttpException) {
+                println("HttpException, unexpected response: \${e.message}")
+                emptyList()
+            }
+        }
+    }
+
+    suspend fun getViolations(): List<Violation> {
+        return withContext(Dispatchers.IO) {
+            try {
+                apiService.getViolations()
+            } catch (e: IOException) {
+                println("IOException, you might want to handle it: \${e.message}")
+                emptyList()
+            } catch (e: HttpException) {
+                println("HttpException, unexpected response: \${e.message}")
+                emptyList()
+            }
+        }
+    }
+
+    suspend fun getRentViolations(): List<RentViolation> {
+        return withContext(Dispatchers.IO) {
+            try {
+                apiService.getRentViolations()
             } catch (e: IOException) {
                 println("IOException, you might want to handle it: \${e.message}")
                 emptyList()

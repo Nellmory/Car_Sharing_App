@@ -43,7 +43,9 @@ class ActivityHub : Fragment() {
         val brandButton: Button = view.findViewById(R.id.brandButton)
         val tariffButton: Button = view.findViewById(R.id.tariffsButton)
         val clintsButton: Button = view.findViewById(R.id.clientsButton)
+        val violationsButton: Button = view.findViewById(R.id.violationsButton)
         val rentsButton: Button = view.findViewById(R.id.rentsButton)
+        val rentViolationButton: Button = view.findViewById(R.id.rentViolationButton)
 
         carsButton.setOnClickListener {
             findNavController().navigate(R.id.action_activityHub_to_car_list)
@@ -57,8 +59,14 @@ class ActivityHub : Fragment() {
         clintsButton.setOnClickListener {
             findNavController().navigate(R.id.action_activityHub_to_clientsList)
         }
+        violationsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_activityHub_to_violationsList)
+        }
         rentsButton.setOnClickListener {
             findNavController().navigate(R.id.action_activityHub_to_rentList)
+        }
+        rentViolationButton.setOnClickListener {
+            findNavController().navigate(R.id.action_activityHub_to_rentViolationList)
         }
 
         return view

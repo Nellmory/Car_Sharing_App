@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/background_dark"
+    android:padding="16dp"
+    tools:context=".rentViolation.RentViolationList">
+
+    <Button
+        android:id="@+id/goBack"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Назад"
+        android:backgroundTint="#80000000"
+        android:fontFamily="@font/merriweatherblack"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:cornerRadius="7dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerViewClients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRentViolations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goBack"/>
+
+</LinearLayout>

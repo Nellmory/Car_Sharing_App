@@ -10,12 +10,13 @@
 
     <EditText
         android:id="@+id/textIdCl"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:enabled="false"
+        android:maxLines="1"
         android:text="Id"
-        android:textColor="@color/black"
-        android:enabled="false"/>
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/textName"
@@ -23,26 +24,33 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Name"
+        android:inputType="text"
+        android:maxLines="1"
         android:textColor="@color/black"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:textSize="17sp"/>
 
     <EditText
         android:id="@+id/textSurname"
         android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_weight="1.1"
+        android:enabled="false"
+        android:inputType="text"
+        android:maxLines="1"
         android:text="Surname"
         android:textColor="@color/black"
-        android:enabled="false"/>
+        android:textSize="17sp" />
 
     <EditText
         android:id="@+id/textTelephone"
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:layout_height="wrap_content"
         android:text="Telephone"
         android:textColor="@color/black"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:textSize="17sp"/>
 
     <Button
         android:id="@+id/deleteButton"

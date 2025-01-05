@@ -8,12 +8,12 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxxhdpi\\new_icon.webp"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_client.xml.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_client.xml"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxhdpi_new_icon_foreground.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxhdpi\\new_icon_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_client.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_client.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
@@ -36,12 +36,16 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\new_icon_foreground.webp"
     },
     {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_car1.png.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\car1.png"
+    },
+    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxxhdpi_new_icon_round.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxxhdpi\\new_icon_round.webp"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_car1.png.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\car1.png"
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_rent_violation_list.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\fragment_rent_violation_list.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_activity_rent_car.xml.flat",
@@ -84,12 +88,16 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-anydpi-v26\\new_icon.xml"
     },
     {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\navigation\\nav_graph.xml"
+    },
+    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_clients_list.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\fragment_clients_list.xml"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\navigation_nav_graph.xml.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\navigation\\nav_graph.xml"
+        "merged": "com.example.myapp2.app-debug-51:/layout_item_client.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/item_client.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xhdpi_new_icon_foreground.webp.flat",
@@ -136,10 +144,6 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\road.jpg"
     },
     {
-        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_clients_list.xml.flat",
-        "source": "com.example.myapp2.app-main-53:/layout/fragment_clients_list.xml"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
     },
@@ -160,16 +164,20 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\back.jpg"
     },
     {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_rent_violation.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_rent_violation.xml"
+    },
+    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\xml\\data_extraction_rules.xml"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_activity_hub.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\fragment_activity_hub.xml"
+    },
+    {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\xml\\data_extraction_rules.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_tariff.xml.flat",
@@ -192,6 +200,10 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_violation.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\item_violation.xml"
+    },
+    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-anydpi-v26_new_icon_round.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-anydpi-v26\\new_icon_round.xml"
     },
@@ -206,6 +218,10 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_my_bg.xml.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\my_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_violations_list.xml.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\layout\\fragment_violations_list.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_item_brand.xml.flat",

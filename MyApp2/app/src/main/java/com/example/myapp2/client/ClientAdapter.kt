@@ -1,5 +1,6 @@
 package com.example.myapp2.client
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,7 +78,19 @@ class ClientAdapter(private val clients: List<Client>) : RecyclerView.Adapter<Cl
             holder.cancelButton.visibility = View.GONE
         }
 
-        holder.deleteButton.setOnClickListener { onClickDB?.onDeleteButtonClick(client.id) }
+        holder.deleteButton.setOnClickListener {
+            AlertDialog.Builder(holder.itemView.context)
+                .setTitle("Подтверждение удаления")
+                .setMessage("Вы действительно хотите удалить клиента?")
+                .setPositiveButton("Удалить") { dialog, _ ->
+                    onClickDB?.onDeleteButtonClick(client.id)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Отмена") { dialog, _ ->
+                    dialog.cancel()
+                }
+                .show()
+        }
     }
 
     override fun getItemCount(): Int {

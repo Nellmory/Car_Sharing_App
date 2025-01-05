@@ -1,5 +1,6 @@
 package com.example.myapp2.rent
 
+import android.app.AlertDialog
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
@@ -116,7 +117,19 @@ class RentAdapter(private val rents: List<Rent>) :
             holder.cancelButton.visibility = View.GONE
         }
 
-        holder.deleteButton.setOnClickListener { onClickDB?.onDeleteButtonClick(rent.id) }
+        holder.deleteButton.setOnClickListener {
+            AlertDialog.Builder(holder.itemView.context)
+                .setTitle("Подтверждение удаления")
+                .setMessage("Вы действительно хотите удалить запись об аренде?")
+                .setPositiveButton("Удалить") { dialog, _ ->
+                    onClickDB?.onDeleteButtonClick(rent.id)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Отмена") { dialog, _ ->
+                    dialog.cancel()
+                }
+                .show()
+        }
     }
 
     override fun getItemCount(): Int {
