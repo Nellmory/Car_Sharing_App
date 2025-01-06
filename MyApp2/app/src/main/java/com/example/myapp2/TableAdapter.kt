@@ -3,6 +3,7 @@ package com.example.myapp2
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
@@ -83,17 +84,19 @@ class TableAdapter {
     }
 
 
-    suspend fun getRents(): List<Rent> {
-        return withContext(Dispatchers.IO) {
-            try {
-                apiService.getRents()
-            } catch (e: IOException) {
-                println("IOException, you might want to handle it: ${e.message}")
-                emptyList()
-            } catch (e: HttpException) {
-                println("HttpException, unexpected response: ${e.message}")
-                emptyList()
+    suspend fun getRents(page: Int): RentsResponse? {
+        return try {
+            val response: Response<RentsResponse> = apiService.getRents(page)
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                Log.e("TableAdapter", "Error response: ${response.errorBody()?.string()}")
+                null
             }
+        } catch (e: Exception) {
+            Log.e("TableAdapter", "Exception: ${e.message}")
+            e.printStackTrace()
+            null
         }
     }
 
@@ -111,20 +114,26 @@ class TableAdapter {
         }
     }
 
-    suspend fun addClient(client: Client): Boolean {
+    suspend fun addClient(client: Client): Result<String> {
         return try {
-            val response = apiService.addClient(client)
+            val response: Response<ResponseBody> = apiService.addClient(client)
             if (response.isSuccessful) {
                 Log.d("TableAdapter", "Client added successfully: ${response.code()}")
-                true
+                Result.success("Client added successfully")
             } else {
-                val errorMessage = response.errorBody()?.string()
-                Log.e("TableAdapter", "Failed to add client: ${response.code()} $errorMessage")
-                false
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = when (response.code()){
+                    400 ->  "Bad request: $errorBody"
+                    500 -> "Server error: $errorBody"
+                    else -> "Unknown error: ${response.code()} $errorBody"
+                }
+
+                Log.e("TableAdapter", "Failed to add client: $errorMessage")
+                Result.failure(Exception(errorMessage))
             }
         } catch (e: Exception) {
             Log.e("TableAdapter", "Exception during add client: ${e.message}")
-            false
+            Result.failure(e)
         }
     }
 
@@ -162,18 +171,60 @@ class TableAdapter {
         }
     }
 
-    suspend fun addRent(rent: Rent): Boolean {
-        val result = apiService.addRent(rent)
-        return result.code() in 200..299
+    suspend fun addRent(rent: Rent): Result<String> {
+        return try {
+            val response: Response<ResponseBody> = apiService.addRent(rent)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Rent added successfully: ${response.code()}")
+                Result.success("Rent added successfully")
+            } else {
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = when (response.code()){
+                    400 ->  "Bad request: $errorBody"
+                    500 -> "Server error: $errorBody"
+                    else -> "Unknown error: ${response.code()} $errorBody"
+                }
+
+                Log.e("TableAdapter", "Failed to add rent: $errorMessage")
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Log.e("TableAdapter", "Exception during add rent: ${e.message}")
+            Result.failure(e)
+        }
     }
 
     suspend fun editRent(id: Int, rent: Rent): Boolean {
-        val result = apiService.updateRent(id, rent)
-        return result.code() in 200..299
+        return try {
+            val response = apiService.editRent(id, rent)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Rent edited successfully: ${response.code()}")
+                true
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                Log.e("TableAdapter", "Failed to edit rent: ${response.code()} $errorMessage")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("TableAdapter", "Exception during edit rent: ${e.message}")
+            false
+        }
     }
 
     suspend fun removeRent(id: Int): Boolean {
-        val result = apiService.deleteRent(id)
-        return result.code() in 200..299
+        return try {
+            val response = apiService.deleteRent(id)
+            if (response.isSuccessful) {
+                Log.d("TableAdapter", "Rent removed successfully: ${response.code()}")
+                true
+            } else {
+                val errorMessage = response.errorBody()?.string()
+                Log.e("TableAdapter", "Failed to remove rent: ${response.code()} $errorMessage")
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("TableAdapter", "Exception during remove rent: ${e.message}")
+            false
+        }
     }
 }

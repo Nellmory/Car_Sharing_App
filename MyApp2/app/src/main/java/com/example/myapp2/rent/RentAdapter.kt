@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapp2.Client
 import com.example.myapp2.R
 import com.example.myapp2.Rent
 import java.text.SimpleDateFormat

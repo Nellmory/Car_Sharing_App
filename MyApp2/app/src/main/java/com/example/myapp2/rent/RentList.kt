@@ -1,10 +1,13 @@
 package com.example.myapp2.rent
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp2.R
 import com.example.myapp2.Rent
+import com.example.myapp2.RentsResponse
 import com.example.myapp2.TableAdapter
 
 /**
@@ -21,14 +25,16 @@ import com.example.myapp2.TableAdapter
  */
 class RentList : Fragment(), RentAdapter.OnItemClickedDB,
     RentAdapter.OnSaveClick {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var repository: TableAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var rentAdapter: RentAdapter
+    private val rentList = mutableListOf<Rent>()
+    private var isLoading = false
+    private var hasMoreData = true
+    private var currentPage = 1
 
+    private lateinit var progressBar: ProgressBar
     private val vm by viewModels<RentListVM>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,19 +53,33 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         val addButton: Button = view.findViewById(R.id.addRentButton)
         val goBackButton: Button = view.findViewById(R.id.goBack)
 
-        repository = TableAdapter()
+        progressBar = view.findViewById(R.id.progressBarR)
+
+        //repository = TableAdapter()
         recyclerView = view.findViewById(R.id.recyclerViewRents)
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        vm.client.observe(viewLifecycleOwner) {
-            rentAdapter = RentAdapter(it)
-            rentAdapter.setOnClickDB(this@RentList)
-            rentAdapter.setOnSaveClick(this@RentList)
-            recyclerView.adapter = rentAdapter
-        }
+        rentAdapter = RentAdapter(rentList)
+        rentAdapter.setOnClickDB(this@RentList)
+        rentAdapter.setOnSaveClick(this@RentList)
+        recyclerView.adapter = rentAdapter
 
-        vm.updateList()
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val visibleItemCount = layoutManager.childCount
+                val totalItemCount = layoutManager.itemCount
+                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+                if (!isLoading && hasMoreData) {
+                    if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
+                        loadRents()
+                    }
+                }
+            }
+        })
 
         addButton.setOnClickListener {
             findNavController().navigate(R.id.action_rentList_to_addRentForm)
@@ -68,15 +88,53 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_rentList_to_activityHub)
         }
 
+        vm.rentsResponse.observe(viewLifecycleOwner) { response ->
+            if (response != null) {
+                updateRecyclerView(response)
+            }
+        }
         return view
+    }
+
+    private fun loadRents() {
+        Log.d("RentsList", "loadRents() called. Current page: $currentPage")
+        isLoading = true
+        progressBar.visibility = View.VISIBLE
+        vm.getRents(currentPage)
+    }
+
+    private fun updateRecyclerView(response: RentsResponse) {
+        Log.d("RentsList", "updateRecyclerView() called. Current page: $currentPage")
+        val newRents = response.rents
+        if (newRents.isEmpty()) {
+            hasMoreData = false
+            Log.d("RentsList", "No more data. hasMoreData = $hasMoreData")
+        } else {
+            rentList.addAll(newRents)
+            rentAdapter.notifyDataSetChanged()
+            currentPage++
+            Log.d("RentsList", "Loaded new data, current page is incremented. Current page: $currentPage")
+        }
+        hasMoreData = response.has_next
+        Log.d("API", "Current page: " + response.current_page)
+        Log.d("API", "Total pages: " + response.total_pages)
+        Log.d("API", "Has next: " + response.has_next)
+        Log.d("API", "Has prev: " + response.has_prev)
+
+        isLoading = false
+        progressBar.visibility = View.GONE
     }
 
     override fun onDeleteButtonClick(id: Int) {
         vm.removeRent(id)
+        rentList.clear()
+        currentPage = 1
     }
 
     override fun onSaveClick(id: Int, rent: Rent) {
         vm.editRent(id,rent)
+        rentList.clear()
+        currentPage = 1
     }
 
     companion object {

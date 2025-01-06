@@ -59,6 +59,14 @@ data class Rent(
     val client_id: Int
 )
 
+data class RentsResponse(
+    val rents: List<Rent>,
+    val total_pages: Int,
+    val current_page: Int,
+    val has_next: Boolean,
+    val has_prev: Boolean
+)
+
 data class Status(
     val id: Int,
     val status: String

@@ -24,9 +24,6 @@ import com.example.myapp2.TableAdapter
  */
 class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     ClientAdapter.OnSaveClick {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var repository: TableAdapter
     private lateinit var recyclerView: RecyclerView
@@ -100,7 +97,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     }
 
     private fun loadClients() {
-        Log.d("ClientsList", "loadClients() called. Current page: $currentPage") // Добавлен лог
+        Log.d("ClientsList", "loadClients() called. Current page: $currentPage")
         isLoading = true
         progressBar.visibility = View.VISIBLE
         vm.getClients(currentPage)

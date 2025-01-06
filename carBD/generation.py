@@ -5,6 +5,7 @@ from __main__ import (BrandModel, ModelModel, CarModel, StatusModel, MethodModel
 from datetime import datetime, timedelta
 
 clients_number = 50
+rents_number = 50
 
 # БРЕНДЫ
 
@@ -209,7 +210,7 @@ def generate_rents(session):
         print("Нет доступных тарифов, автомобилей или клиентов для генерации.")
         return
 
-    for _ in range(10):
+    for _ in range(rents_number):
         start_date = random_date(datetime.now() - timedelta(days=5 * 365), datetime.now())
         finish_date = random_date(start_date, start_date + timedelta(
             days=random.randint(1, 600)))

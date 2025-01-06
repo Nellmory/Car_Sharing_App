@@ -5,27 +5,44 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapp2.Rent
+import com.example.myapp2.RentsResponse
 import com.example.myapp2.TableAdapter
 import kotlinx.coroutines.launch
 
 class RentListVM: ViewModel() {
-    private var _rents = MutableLiveData<List<Rent>>()
-    var client: LiveData<List<Rent>> = _rents
+    private var _rentsResponse = MutableLiveData<RentsResponse>()
+    var rentsResponse: LiveData<RentsResponse> = _rentsResponse
+    private val _addRentResult = MutableLiveData<Result<String>>()
+    val addRentResult: LiveData<Result<String>> = _addRentResult
+    private var currentPage = 1
 
     private var repository = TableAdapter()
 
-    fun updateList() {
+    init {
+        loadRents()
+    }
+
+    fun getRents(page: Int) {
+        loadRents(page)
+    }
+
+    private fun loadRents(page: Int = currentPage) {
         viewModelScope.launch {
-            val rents = repository.getRents()
-            _rents.value = rents
+            _rentsResponse.value = repository.getRents(page)
         }
+    }
+
+    fun reloadRents() {
+        currentPage = 1;
+        loadRents()
     }
 
     fun addRent(rent: Rent) {
         viewModelScope.launch {
-            val isAdded = repository.addRent(rent)
-            if (isAdded) {
-                updateList()
+            val result = repository.addRent(rent)
+            _addRentResult.postValue(result)
+            if (result.isSuccess) {
+                reloadRents()
             }
         }
     }
@@ -34,7 +51,7 @@ class RentListVM: ViewModel() {
         viewModelScope.launch {
             val isEdited = repository.editRent(id,rent)
             if (isEdited) {
-                updateList()
+                reloadRents()
             }
         }
     }
@@ -43,7 +60,7 @@ class RentListVM: ViewModel() {
         viewModelScope.launch {
             val isRemoved = repository.removeRent(id)
             if (isRemoved) {
-                updateList()
+                reloadRents()
             }
         }
     }

@@ -1,10 +1,9 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import Session, as_declarative, relationship, scoped_session, sessionmaker
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 from markupsafe import escape
 from sqlalchemy_pagination import paginate
-import pdb
 
 engine = create_engine("sqlite:///carDB.db", echo=False)
 app = Flask(__name__)
@@ -175,15 +174,16 @@ def clients():
     }
     return jsonify(result)
 
+
 @app.route('/add_client', methods=['POST'])
 def add_client():
     data = request.get_json()
     if not data:
         return jsonify({'error': 'Request body must be JSON'}), 400
     try:
-      name = escape(data['name'])
-      surname = escape(data['surname'])
-      telephone = escape(data['telephone'])
+        name = escape(data['name'])
+        surname = escape(data['surname'])
+        telephone = escape(data['telephone'])
     except KeyError:
         return jsonify({'error': 'Missing required fields'}), 400
 
@@ -196,7 +196,7 @@ def add_client():
         session.rollback()
         return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
     finally:
-      session.close()
+        session.close()
 
     return jsonify({'message': 'Client added successfully'}), 201
 
@@ -207,9 +207,9 @@ def edit_client(client_id):
     if not data:
         return jsonify({'error': 'Request body must be JSON'}), 400
     try:
-      name = escape(data['name'])
-      surname = escape(data['surname'])
-      telephone = escape(data['telephone'])
+        name = escape(data['name'])
+        surname = escape(data['surname'])
+        telephone = escape(data['telephone'])
     except KeyError:
         return jsonify({'error': 'Missing required fields'}), 400
 
@@ -224,7 +224,7 @@ def edit_client(client_id):
         session.rollback()
         return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
     finally:
-      session.close()
+        session.close()
 
     return jsonify({'message': 'Client edited successfully'}), 201
 
@@ -240,10 +240,9 @@ def delete_client(client_id):
         session.rollback()
         return jsonify({'error': f"Failed to delete client: {str(e)}"}), 500
     finally:
-      session.close()
+        session.close()
 
     return jsonify({'message': 'Client deleted successfully'}), 201
-
 
 
 @app.route('/tariffs')
@@ -295,76 +294,115 @@ def violations():
     return jsonify(violations_list)
 
 
-@app.route('/rents')
+@app.route('/rents', methods=['GET'])
 def rents():
-    session = db_session()
-    rents = session.query(RentModel).all()
-    session.close()
-    rents_list = [{'id': rent.id, 'start_date': rent.start_date, 'finish_date': rent.finish_date, 'tariff': rent.tariff,
-                   'car_id': rent.car_id, 'client_id': rent.client_id} for rent in rents]
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
 
-    return jsonify(rents_list)
+    session = db_session()
+    rents = session.query(RentModel)
+    paginated_rents = paginate(rents, page, per_page)
+    session.close()
+
+    rents_list = [{'id': rent.id, 'start_date': rent.start_date, 'finish_date': rent.finish_date, 'tariff': rent.tariff,
+                   'car_id': rent.car_id, 'client_id': rent.client_id} for rent in paginated_rents.items]
+
+    result = {
+        'rents': rents_list,
+        'total_pages': paginated_rents.pages,
+        'current_page': page,
+        'has_next': paginated_rents.has_next,
+        'has_prev': paginated_rents.has_previous
+    }
+    return jsonify(result)
 
 
 @app.route('/add_rent', methods=['POST'])
 def add_rent():
-    start_date_str = escape(request.json['start_date'])
-    finish_date_str = escape(request.json['finish_date'])
-    tariff = escape(request.json['tariff'])
-    car_id = escape(request.json['car_id'])
-    client_id = escape(request.json['client_id'])
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Request body must be JSON'}), 400
+    try:
+        start_date_str = escape(data['start_date'])
+        finish_date_str = escape(data['finish_date'])
+        tariff = escape(data['tariff'])
+        car_id = escape(data['car_id'])
+        client_id = escape(data['client_id'])
 
-    start_date = datetime.strptime(start_date_str, '%Y-%m-%dT%H:%M')
-    finish_date = datetime.strptime(finish_date_str, '%Y-%m-%dT%H:%M')
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%dT%H:%M')
+        finish_date = datetime.strptime(finish_date_str, '%Y-%m-%dT%H:%M')
+    except KeyError:
+        return jsonify({'error': 'Missing required fields'}), 400
 
     session = db_session()
-    new_rent = RentModel(
-        start_date=start_date,
-        finish_date=finish_date,
-        tariff=tariff,
-        car_id=car_id,
-        client_id=client_id
-    )
-    session.add(new_rent)
-    session.commit()
-    session.close()
+    try:
+        new_rent = RentModel(
+            start_date=start_date,
+            finish_date=finish_date,
+            tariff=tariff,
+            car_id=car_id,
+            client_id=client_id
+        )
+        session.add(new_rent)
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
+    finally:
+        session.close()
 
-    return jsonify({'message': 'Rent added successfully'})
+    return jsonify({'message': 'Rent added successfully'}), 201
 
 
 @app.route('/edit_rent/<int:rent_id>', methods=['PUT'])
 def edit_rent(rent_id):
-    start_date_str = escape(request.json['start_date'])
-    finish_date_str = escape(request.json['finish_date'])
-    tariff = escape(request.json['tariff'])
-    car_id = escape(request.json['car_id'])
-    client_id = escape(request.json['client_id'])
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Request body must be JSON'}), 400
+    try:
+        start_date_str = escape(data['start_date'])
+        finish_date_str = escape(data['finish_date'])
+        tariff = escape(data['tariff'])
+        car_id = escape(data['car_id'])
+        client_id = escape(data['client_id'])
 
-    start_date = datetime.strptime(start_date_str, '%Y-%m-%dT%H:%M')
-    finish_date = datetime.strptime(finish_date_str, '%Y-%m-%dT%H:%M')
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%dT%H:%M')
+        finish_date = datetime.strptime(finish_date_str, '%Y-%m-%dT%H:%M')
+    except KeyError:
+        return jsonify({'error': 'Missing required fields'}), 400
 
     session = db_session()
-    rent = session.query(RentModel).get(rent_id)
-    rent.start_date = start_date
-    rent.finish_date = finish_date
-    rent.tariff = tariff
-    rent.car_id = car_id
-    rent.client_id = client_id
-    session.commit()
-    session.close()
+    try:
+        rent = session.query(RentModel).get(rent_id)
+        rent.start_date = start_date
+        rent.finish_date = finish_date
+        rent.tariff = tariff
+        rent.car_id = car_id
+        rent.client_id = client_id
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to add client: {str(e)}"}), 500
+    finally:
+        session.close()
 
-    return jsonify({'message': 'Rent edited successfully'})
+    return jsonify({'message': 'Rent edited successfully'}), 201
 
 
 @app.route('/delete_rent/<int:rent_id>', methods=['DELETE'])
 def delete_rent(rent_id):
     session = db_session()
-    rent = session.query(RentModel).get(rent_id)
-    session.delete(rent)
-    session.commit()
-    session.close()
+    try:
+        rent = session.query(RentModel).get(rent_id)
+        session.delete(rent)
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        return jsonify({'error': f"Failed to delete client: {str(e)}"}), 500
+    finally:
+        session.close()
 
-    return jsonify({'message': 'Rent deleted successfully'})
+    return jsonify({'message': 'Rent deleted successfully'}), 201
 
 
 from generation import generation

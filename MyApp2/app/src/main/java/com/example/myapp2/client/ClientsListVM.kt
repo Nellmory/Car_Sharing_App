@@ -13,6 +13,8 @@ import kotlinx.coroutines.launch
 class ClientsListVM: ViewModel() {
     private var _clientsResponse = MutableLiveData<ClientsResponse>()
     var clientsResponse: LiveData<ClientsResponse> = _clientsResponse
+    private val _addClientResult = MutableLiveData<Result<String>>()
+    val addClientResult: LiveData<Result<String>> = _addClientResult
     private var currentPage = 1
 
     private var repository = TableAdapter()
@@ -24,6 +26,7 @@ class ClientsListVM: ViewModel() {
     fun getClients(page: Int) {
         loadClients(page)
     }
+
     private fun loadClients(page: Int = currentPage) {
         viewModelScope.launch {
             _clientsResponse.value = repository.getClients(page)
@@ -37,11 +40,11 @@ class ClientsListVM: ViewModel() {
 
     fun addClient(client: Client) {
         viewModelScope.launch {
-            val isAdded = repository.addClient(client)
-            if (isAdded) {
+            val result = repository.addClient(client)
+            _addClientResult.postValue(result)
+            if (result.isSuccess) {
                 reloadClients()
             }
-
         }
     }
 

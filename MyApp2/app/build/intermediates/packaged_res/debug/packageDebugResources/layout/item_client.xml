@@ -48,8 +48,6 @@
         android:layout_weight="1.1"
         android:layout_height="wrap_content"
         android:text="Telephone"
-        android:inputType="text"
-        android:maxLines="1"
         android:textColor="@color/black"
         android:enabled="false"
         android:textSize="17sp"/>

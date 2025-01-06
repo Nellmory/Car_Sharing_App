@@ -1,7 +1,6 @@
 package com.example.myapp2
 
 import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -28,7 +27,7 @@ interface ApiService {
     suspend fun getCars(): List<Car>
 
     @GET("rents")
-    suspend fun getRents(): List<Rent>
+    suspend fun getRents(@Query("page") page: Int, @Query("per_page") perPage: Int = 10): Response<RentsResponse>
 
     @GET("violations")
     suspend fun getViolations(): List<Violation>
@@ -42,12 +41,12 @@ interface ApiService {
     suspend fun addClient(@Body client: Client): Response<ResponseBody>
 
     @POST("add_rent")
-    suspend fun addRent(@Body rent: Rent): Response<Rent>
+    suspend fun addRent(@Body rent: Rent): Response<ResponseBody>
 
     //УДАЛЕНИЕ
 
     @DELETE("delete_rent/{id}")
-    suspend fun deleteRent(@Path("id") id: Int): Response<Void>
+    suspend fun deleteRent(@Path("id") id: Int): Response<ResponseBody>
 
     @DELETE("/delete_client/{id}")
     suspend fun deleteClient(@Path("id") id: Int): Response<ResponseBody>
@@ -55,7 +54,7 @@ interface ApiService {
     //ОБНОВЛЕНИЕ
 
     @PUT("edit_rent/{id}")
-    suspend fun updateRent(@Path("id") id: Int, @Body rent: Rent): Response<Rent>
+    suspend fun editRent(@Path("id") id: Int, @Body rent: Rent): Response<ResponseBody>
 
     @PUT("edit_client/{id}")
     suspend fun editClient(@Path("id") id: Int, @Body client: Client): Response<ResponseBody>
