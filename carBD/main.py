@@ -410,4 +410,4 @@ from generation import generation
 if __name__ == "__main__":
     with Session(bind=engine) as session:
         generation(session)
-        app.run(debug=True)
+        app.run(debug=True, host='0.0.0.0', port=5000)

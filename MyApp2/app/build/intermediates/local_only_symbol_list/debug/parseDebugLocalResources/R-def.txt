@@ -145,3 +145,4 @@ style Base.Theme.MyApp2
 style Theme.MyApp2
 xml backup_rules
 xml data_extraction_rules
+xml network_security_config

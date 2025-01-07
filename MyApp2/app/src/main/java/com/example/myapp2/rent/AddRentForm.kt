@@ -10,11 +10,9 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.myapp2.Client
 import com.example.myapp2.R
 import com.example.myapp2.Rent
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
 
 /**
