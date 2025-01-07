@@ -5,6 +5,7 @@ color white
 drawable back
 drawable car
 drawable car1
+drawable filter
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable my_bg
@@ -56,8 +57,11 @@ id editTextStart
 id editTextSurname
 id editTextTariff
 id editTextTelephone
+id filterButton
 id fragment
 id goBack
+id goBackButton
+id goBackButtonR
 id goBackT
 id main
 id nav_graph
@@ -76,6 +80,7 @@ id rentViolationButton
 id rentViolationList
 id rentsButton
 id saveButton
+id searchView
 id tariffList
 id tariffsButton
 id textBrandName
@@ -139,6 +144,7 @@ string cars
 string clients
 string hello_blank_fragment
 string punishments
+string search
 string tariffs
 string welcome_title
 style Base.Theme.MyApp2

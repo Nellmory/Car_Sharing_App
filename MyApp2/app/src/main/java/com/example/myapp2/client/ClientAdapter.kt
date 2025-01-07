@@ -12,7 +12,7 @@ import com.example.myapp2.R
 
 class ClientAdapter(private val clients: List<Client>) : RecyclerView.Adapter<ClientAdapter.ClientViewHolder>() {
 
-        private var onClickDB: OnItemClickedDB? = null
+    private var onClickDB: OnItemClickedDB? = null
     private var onSaveClick: OnSaveClick? = null
 
     class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -1,6 +1,5 @@
 package com.example.myapp2.rent
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,6 +17,8 @@ import com.example.myapp2.R
 import com.example.myapp2.Rent
 import com.example.myapp2.RentsResponse
 import com.example.myapp2.TableAdapter
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /**
  * A simple [Fragment] subclass.
@@ -33,7 +35,10 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
     private var isLoading = false
     private var hasMoreData = true
     private var currentPage = 1
-
+    private lateinit var searchView: SearchView
+    private var currentSearchQuery: String? = null
+    private val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    private val inputFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
     private lateinit var progressBar: ProgressBar
     private val vm by viewModels<RentListVM>()
 
@@ -52,10 +57,10 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         val view = inflater.inflate(R.layout.fragment_rent_list, container, false)
         val addButton: Button = view.findViewById(R.id.addRentButton)
         val goBackButton: Button = view.findViewById(R.id.goBack)
+        searchView = view.findViewById(R.id.searchView)
 
         progressBar = view.findViewById(R.id.progressBarR)
 
-        //repository = TableAdapter()
         recyclerView = view.findViewById(R.id.recyclerViewRents)
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -88,6 +93,18 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_rentList_to_activityHub)
         }
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                currentSearchQuery = newText
+                filterRents(newText)
+                return true
+            }
+        })
+
         vm.rentsResponse.observe(viewLifecycleOwner) { response ->
             if (response != null) {
                 updateRecyclerView(response)
@@ -96,11 +113,31 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         return view
     }
 
-    private fun loadRents() {
-        Log.d("RentsList", "loadRents() called. Current page: $currentPage")
+    private fun filterRents(query: String?) {
+        rentList.clear()
+        currentPage = 1
+        hasMoreData = true
+        loadRents(query)
+    }
+
+    private fun loadRents(searchQuery: String? = null) {
+        Log.d("RentsList", "loadRents() called. Current page: $currentPage. searchQuery: $searchQuery")
         isLoading = true
-        progressBar.visibility = View.VISIBLE
-        vm.getRents(currentPage)
+        progressBar?.visibility = View.VISIBLE
+
+        val formattedQuery = formatQuery(searchQuery)
+        vm.getRents(currentPage, formattedQuery)
+    }
+
+    private fun formatQuery(query: String?): String? {
+        if (query.isNullOrEmpty()) return null
+
+        return try {
+            val date = inputFormat.parse(query)
+            outputFormat.format(date!!)
+        } catch (e: Exception) {
+            query
+        }
     }
 
     private fun updateRecyclerView(response: RentsResponse) {

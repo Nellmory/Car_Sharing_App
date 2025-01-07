@@ -43,6 +43,7 @@ class AddClientForm : Fragment() {
         var surnameET: EditText = view.findViewById(R.id.editTextSurname)
         var telephoneET: EditText = view.findViewById(R.id.editTextTelephone)
         val addButton: Button = view.findViewById(R.id.addClientButton)
+        val goBackButton: Button = view.findViewById(R.id.goBackButton)
 
         addButton.setOnClickListener {
             val name = nameET.text.toString()
@@ -55,6 +56,8 @@ class AddClientForm : Fragment() {
 
             vm.addClient(Client(0, name, surname, telephone))
         }
+
+        goBackButton.setOnClickListener { findNavController().navigate(R.id.action_addClientForm_to_clientsList) }
 
         vm.addClientResult.observe(viewLifecycleOwner) { result ->
             if (result.isSuccess) {

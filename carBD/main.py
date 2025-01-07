@@ -154,25 +154,42 @@ def paying_methods():
 
 @app.route('/clients', methods=['GET'])
 def clients():
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
-
     session = db_session()
-    clients = session.query(ClientModel)
-    paginated_clients = paginate(clients, page, per_page)
-    session.close()
+    page = request.args.get('page', 1, type=int)
+    query = request.args.get('query', default=None, type=str)
+    clients_per_page = 10
 
-    clients_list = [{'id': client.id, 'name': client.name, 'surname': client.surname, 'telephone': client.telephone} for
-                    client in paginated_clients.items]
+    try:
+        clients = session.query(ClientModel)
 
-    result = {
-        'clients': clients_list,
-        'total_pages': paginated_clients.pages,
-        'current_page': page,
-        'has_next': paginated_clients.has_next,
-        'has_prev': paginated_clients.has_previous
-    }
-    return jsonify(result)
+        if query:
+            clients = clients.filter(
+                RentModel.id.contains(query) |
+                ClientModel.name.contains(query) |
+                ClientModel.surname.contains(query) |
+                ClientModel.telephone.contains(query)
+            )
+
+        total_clients = clients.count()
+        total_pages = (total_clients + clients_per_page - 1) // clients_per_page
+
+        clients = clients.offset((page - 1) * clients_per_page).limit(clients_per_page).all()
+
+        clients_list = [{'id': client.id, 'name': client.name, 'surname': client.surname, 'telephone': client.telephone}
+                        for client in clients]
+
+        result = {
+            'clients': clients_list,
+            'total_pages': total_pages,
+            'current_page': page,
+            'has_next': page < total_pages,
+            'has_prev': page > 1
+        }
+        return jsonify(result), 200
+    except Exception as e:
+        return jsonify({'error': f"Failed to retrieve clients: {str(e)}"}), 500
+    finally:
+        session.close()
 
 
 @app.route('/add_client', methods=['POST'])
@@ -296,25 +313,45 @@ def violations():
 
 @app.route('/rents', methods=['GET'])
 def rents():
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
-
     session = db_session()
-    rents = session.query(RentModel)
-    paginated_rents = paginate(rents, page, per_page)
-    session.close()
+    page = request.args.get('page', 1, type=int)
+    query = request.args.get('query', default=None, type=str)
+    rents_per_page = 10
 
-    rents_list = [{'id': rent.id, 'start_date': rent.start_date, 'finish_date': rent.finish_date, 'tariff': rent.tariff,
-                   'car_id': rent.car_id, 'client_id': rent.client_id} for rent in paginated_rents.items]
+    try:
+        rents = session.query(RentModel)
 
-    result = {
-        'rents': rents_list,
-        'total_pages': paginated_rents.pages,
-        'current_page': page,
-        'has_next': paginated_rents.has_next,
-        'has_prev': paginated_rents.has_previous
-    }
-    return jsonify(result)
+        if query:
+            rents = rents.filter(
+                RentModel.id.contains(query) |
+                RentModel.start_date.contains(query) |
+                RentModel.finish_date.contains(query) |
+                RentModel.tariff.contains(query) |
+                RentModel.client_id.contains(query) |
+                RentModel.car_id.contains(query)
+            )
+
+        total_rents = rents.count()
+        total_pages = (total_rents + rents_per_page - 1) // rents_per_page
+
+        rents = rents.offset((page - 1) * rents_per_page).limit(rents_per_page).all()
+
+        rents_list = [
+            {'id': rent.id, 'start_date': rent.start_date, 'finish_date': rent.finish_date, 'tariff': rent.tariff,
+             'car_id': rent.car_id, 'client_id': rent.client_id} for rent in rents]
+
+        result = {
+            'rents': rents_list,
+            'total_pages': total_pages,
+            'current_page': page,
+            'has_next': page < total_pages,
+            'has_prev': page > 1
+        }
+        return jsonify(result), 200
+    except Exception as e:
+        return jsonify({'error': f"Failed to retrieve rents: {str(e)}"}), 500
+    finally:
+        session.close()
 
 
 @app.route('/add_rent', methods=['POST'])

@@ -10,4 +10,5 @@
     <string name="cars">Машины</string>
     <string name="tariffs">Тарифы</string>
     <string name="clients">Клиенты</string>
+    <string name="search">Поиск</string>
 </resources>

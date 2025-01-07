@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".client.ClientsList"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@android:color/background_dark"
         android:orientation="vertical"
         android:padding="16dp"
@@ -58,6 +58,37 @@
             app:layout_constraintTop_toBottomOf="@id/goBack"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_bg"
+                />
+
+            <Button
+                android:id="@+id/filterButton"
+                android:layout_width="48dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#44FFFFFF"
+                android:drawablePadding="0dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:cornerRadius="7dp"
+                app:icon="@drawable/filter"
+                app:iconSize="30dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewClients"

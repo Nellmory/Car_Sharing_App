@@ -22,13 +22,12 @@ class RentListVM: ViewModel() {
         loadRents()
     }
 
-    fun getRents(page: Int) {
-        loadRents(page)
+    fun getRents(page: Int, query: String? = null) {
+        loadRents(page,query)
     }
-
-    private fun loadRents(page: Int = currentPage) {
+    private fun loadRents(page: Int = currentPage, query: String? = null) {
         viewModelScope.launch {
-            _rentsResponse.value = repository.getRents(page)
+            _rentsResponse.value = repository.getRents(page,query)
         }
     }
 

@@ -48,6 +48,7 @@ class AddRentForm : Fragment() {
         carET = view.findViewById(R.id.editTextCarId)
         clientET = view.findViewById(R.id.editTextClientId)
         val addButton: Button = view.findViewById(R.id.addRentButton)
+        val goBackButton: Button = view.findViewById(R.id.goBackButtonR)
 
         addButton.setOnClickListener {
             if (!validateInput()) {
@@ -56,6 +57,8 @@ class AddRentForm : Fragment() {
             val newRent = createRentFromInput()
             vm.addRent(newRent)
         }
+
+        goBackButton.setOnClickListener { findNavController().navigate(R.id.action_addRentForm_to_rentList) }
 
         vm.addRentResult.observe(viewLifecycleOwner) { result ->
             if (result.isSuccess) {

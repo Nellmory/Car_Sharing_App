@@ -23,8 +23,14 @@ class ClientsListVM: ViewModel() {
         loadClients()
     }
 
-    fun getClients(page: Int) {
-        loadClients(page)
+    fun getClients(page: Int, query: String? = null) {
+        loadClients(page,query)
+    }
+
+    private fun loadClients(page: Int = currentPage, query: String? = null) {
+        viewModelScope.launch {
+            _clientsResponse.value = repository.getClients(page,query)
+        }
     }
 
     private fun loadClients(page: Int = currentPage) {

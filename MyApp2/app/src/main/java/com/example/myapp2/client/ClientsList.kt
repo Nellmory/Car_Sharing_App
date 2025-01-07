@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,6 +34,9 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     private var hasMoreData = true
     private var currentPage = 1
 
+    private lateinit var searchView: SearchView
+    private var currentSearchQuery: String? = null
+
     private lateinit var progressBar: ProgressBar
     private val vm by viewModels<ClientsListVM>()
 
@@ -51,6 +55,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_clients_list, container, false)
         val addButton: Button = view.findViewById(R.id.addClientButton)
+        searchView = view.findViewById(R.id.searchView)
         val goBackButton: Button = view.findViewById(R.id.goBack)
 
         progressBar = view.findViewById(R.id.progressBar)
@@ -87,6 +92,18 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_clientsList_to_activityHub)
         }
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                currentSearchQuery = newText
+                filterClients(newText)
+                return true
+            }
+        })
+
         vm.clientsResponse.observe(viewLifecycleOwner) { response ->
             if (response != null) {
                 updateRecyclerView(response)
@@ -96,11 +113,18 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
         return view
     }
 
+    private fun filterClients(query: String?) {
+        clientList.clear()
+        currentPage = 1
+        hasMoreData = true
+        loadClients()
+    }
+
     private fun loadClients() {
         Log.d("ClientsList", "loadClients() called. Current page: $currentPage")
         isLoading = true
-        progressBar.visibility = View.VISIBLE
-        vm.getClients(currentPage)
+        progressBar?.visibility = View.VISIBLE
+        vm.getClients(currentPage, currentSearchQuery)
     }
 
     private fun updateRecyclerView(response: ClientsResponse) {

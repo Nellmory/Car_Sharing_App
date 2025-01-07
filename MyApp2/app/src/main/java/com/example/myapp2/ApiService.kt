@@ -18,7 +18,7 @@ interface ApiService {
     suspend fun getBrands(): List<Brand>
 
     @GET("clients")
-    suspend fun getClients(@Query("page") page: Int, @Query("per_page") perPage: Int = 10): Response<ClientsResponse>
+    suspend fun getClients(@Query("page") page: Int, @Query("query") query: String?): Response<ClientsResponse>
 
     @GET("tariffs")
     suspend fun getTariffs(): List<Tariff>
@@ -27,7 +27,7 @@ interface ApiService {
     suspend fun getCars(): List<Car>
 
     @GET("rents")
-    suspend fun getRents(@Query("page") page: Int, @Query("per_page") perPage: Int = 10): Response<RentsResponse>
+    suspend fun getRents(@Query("page") page: Int, @Query("query") query: String?): Response<RentsResponse>
 
     @GET("violations")
     suspend fun getViolations(): List<Violation>
