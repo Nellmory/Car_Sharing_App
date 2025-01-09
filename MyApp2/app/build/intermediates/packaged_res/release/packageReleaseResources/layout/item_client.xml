@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:orientation="horizontal"
+    tools:context=".client.ClientsList">
+
+    <EditText
+        android:id="@+id/textIdCl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:enabled="false"
+        android:maxLines="1"
+        android:text="Id"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/textName"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:enabled="false"
+        android:textSize="17sp"/>
+
+    <EditText
+        android:id="@+id/textSurname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.1"
+        android:enabled="false"
+        android:inputType="text"
+        android:maxLines="1"
+        android:text="Surname"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/textTelephone"
+        android:layout_width="0dp"
+        android:layout_weight="1.1"
+        android:layout_height="wrap_content"
+        android:text="Telephone"
+        android:textColor="@color/black"
+        android:enabled="false"
+        android:textSize="17sp"/>
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:backgroundTint="#80000000"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:icon="@android:drawable/ic_delete"
+        app:iconGravity="textStart"
+        app:iconSize="25dp"
+        app:iconTintMode="multiply" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:backgroundTint="#80000000"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:icon="@android:drawable/ic_menu_edit"
+        app:iconGravity="textStart"
+        app:iconSize="25dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:visibility="gone"
+        android:backgroundTint="#80000000"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:icon="@android:drawable/ic_menu_save"
+        app:iconGravity="textStart"
+        app:iconSize="25dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:backgroundTint="#80000000"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="10"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:icon="@android:drawable/ic_delete"
+        app:iconGravity="textStart"
+        app:iconSize="25dp"
+        app:iconTint="@color/white"
+        app:iconTintMode="multiply"
+        android:visibility="gone" />
+
+</LinearLayout>

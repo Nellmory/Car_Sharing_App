@@ -84,9 +84,9 @@ class TableAdapter {
     }
 
 
-    suspend fun getRents(page: Int, query: String? = null): RentsResponse? {
+    suspend fun getRents(page: Int, query: String? = null, startDate: String? = null, finishDate: String? = null): RentsResponse? {
         return try {
-            val response: Response<RentsResponse> = apiService.getRents(page, query)
+            val response: Response<RentsResponse> = apiService.getRents(page, query, startDate, finishDate)
             if (response.isSuccessful) {
                 response.body()
             } else {

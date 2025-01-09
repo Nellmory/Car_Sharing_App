@@ -2,16 +2,19 @@ package com.example.myapp2.rent
 
 import android.app.AlertDialog
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import java.text.SimpleDateFormat
+import java.util.*
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp2.R
 import com.example.myapp2.Rent
-import java.text.SimpleDateFormat
 import java.util.Locale
+import java.util.TimeZone
 
 class RentAdapter(private val rents: List<Rent>) :
     RecyclerView.Adapter<RentAdapter.RentViewHolder>() {
@@ -42,10 +45,12 @@ class RentAdapter(private val rents: List<Rent>) :
 
         val outputFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
         val inputFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
-        val startDate = inputFormat.parse(rent.start_date)
+        outputFormat.timeZone = TimeZone.getTimeZone("GMT")
+        var startDate = inputFormat.parse(rent.start_date)
         val finishDate = inputFormat.parse(rent.finish_date)
 
         holder.textId.setText(rent.id.toString())
+        Log.d("Adapter", "До: ${rent.start_date} После: ${startDate} Аутпут: ${outputFormat.format(startDate)}")
         holder.textStartDate.text =
             Editable.Factory.getInstance().newEditable(outputFormat.format(startDate))
         holder.textFinishDate.text =

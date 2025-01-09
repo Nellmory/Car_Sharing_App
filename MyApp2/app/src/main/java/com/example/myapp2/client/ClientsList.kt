@@ -1,5 +1,6 @@
 package com.example.myapp2.client
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -127,6 +128,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
         vm.getClients(currentPage, currentSearchQuery)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun updateRecyclerView(response: ClientsResponse) {
         Log.d("ClientsList", "updateRecyclerView() called. Current page: $currentPage")
         val newClients = response.clients

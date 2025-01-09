@@ -1,4 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime
+from operator import and_
+
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, func
 from sqlalchemy.orm import Session, as_declarative, relationship, scoped_session, sessionmaker
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
@@ -316,10 +318,23 @@ def rents():
     session = db_session()
     page = request.args.get('page', 1, type=int)
     query = request.args.get('query', default=None, type=str)
+    start_date_str = request.args.get('start_date', default=None, type=str)
+    finish_date_str = request.args.get('finish_date', default=None, type=str)
     rents_per_page = 10
 
     try:
         rents = session.query(RentModel)
+
+        if start_date_str and finish_date_str:
+            start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+            finish_date = datetime.strptime(finish_date_str, '%Y-%m-%d').date()
+
+            rents = rents.filter(
+                and_(
+                    func.date(RentModel.start_date) <= finish_date,
+                    func.date(RentModel.start_date) >= start_date
+                )
+            )
 
         if query:
             rents = rents.filter(

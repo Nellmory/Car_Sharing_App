@@ -1,6 +1,8 @@
 package com.example.myapp2.rent
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.recyclerview.widget.DiffUtil
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +19,9 @@ import com.example.myapp2.R
 import com.example.myapp2.Rent
 import com.example.myapp2.RentsResponse
 import com.example.myapp2.TableAdapter
+import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 /**
@@ -57,6 +61,7 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         val view = inflater.inflate(R.layout.fragment_rent_list, container, false)
         val addButton: Button = view.findViewById(R.id.addRentButton)
         val goBackButton: Button = view.findViewById(R.id.goBack)
+        val filterButton: Button = view.findViewById(R.id.filterButton)
         searchView = view.findViewById(R.id.searchView)
 
         progressBar = view.findViewById(R.id.progressBarR)
@@ -93,6 +98,10 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_rentList_to_activityHub)
         }
 
+        filterButton.setOnClickListener {
+            showDateRangePicker()
+        }
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -113,20 +122,39 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         return view
     }
 
-    private fun filterRents(query: String?) {
+    private fun showDateRangePicker() {
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
+        val picker = builder.build()
+
+        Log.e("RentList", "showDateRangePicker() was called")
+        picker.addOnPositiveButtonClickListener { selection ->
+            val startDate = Date(selection.first)
+            val endDate = Date(selection.second)
+            val startDateFilter = outputFormat.format(startDate)
+            val finishDateFilter = outputFormat.format(endDate)
+            Log.e("RentList", "startDate: ${startDateFilter}, finishDate:${finishDateFilter}")
+            filterRents(currentSearchQuery, startDateFilter, finishDateFilter)
+        }
+
+        picker.show(childFragmentManager, picker.toString())
+    }
+
+
+    private fun filterRents(query: String?, startDate: String? = null, finishDate: String? = null) {
         rentList.clear()
         currentPage = 1
         hasMoreData = true
-        loadRents(query)
+        Log.e("RentList", " filter rents was called")
+        loadRents(query, startDate, finishDate)
     }
 
-    private fun loadRents(searchQuery: String? = null) {
-        Log.d("RentsList", "loadRents() called. Current page: $currentPage. searchQuery: $searchQuery")
+    private fun loadRents(searchQuery: String? = null, startDate: String? = null, finishDate: String? = null) {
+        Log.d("RentsList", "loadRents() called. Current page: $currentPage. searchQuery: $searchQuery, startDate: $startDate, finishDate: $finishDate")
         isLoading = true
-        progressBar?.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
 
         val formattedQuery = formatQuery(searchQuery)
-        vm.getRents(currentPage, formattedQuery)
+        vm.getRents(currentPage, formattedQuery, startDate, finishDate)
     }
 
     private fun formatQuery(query: String?): String? {
@@ -140,17 +168,18 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun updateRecyclerView(response: RentsResponse) {
-        Log.d("RentsList", "updateRecyclerView() called. Current page: $currentPage")
+        Log.d("RentList", "updateRecyclerView() called. Current page: $currentPage")
         val newRents = response.rents
         if (newRents.isEmpty()) {
             hasMoreData = false
-            Log.d("RentsList", "No more data. hasMoreData = $hasMoreData")
+            Log.d("RentList", "No more data. hasMoreData = $hasMoreData")
         } else {
             rentList.addAll(newRents)
             rentAdapter.notifyDataSetChanged()
             currentPage++
-            Log.d("RentsList", "Loaded new data, current page is incremented. Current page: $currentPage")
+            Log.d("RentList", "Loaded new data, current page is incremented. Current page: $currentPage")
         }
         hasMoreData = response.has_next
         Log.d("API", "Current page: " + response.current_page)
@@ -173,6 +202,7 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         rentList.clear()
         currentPage = 1
     }
+
 
     companion object {
         /**

@@ -27,7 +27,12 @@ interface ApiService {
     suspend fun getCars(): List<Car>
 
     @GET("rents")
-    suspend fun getRents(@Query("page") page: Int, @Query("query") query: String?): Response<RentsResponse>
+    suspend fun getRents(
+        @Query("page") page: Int,
+        @Query("query") query: String?,
+        @Query("start_date") startDate: String?,
+        @Query("finish_date") finishDate: String?
+    ): Response<RentsResponse>
 
     @GET("violations")
     suspend fun getViolations(): List<Violation>
