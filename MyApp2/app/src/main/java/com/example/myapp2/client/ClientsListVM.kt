@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapp2.Client
 import com.example.myapp2.ClientsResponse
 import com.example.myapp2.TableAdapter
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class ClientsListVM: ViewModel() {
@@ -31,6 +32,19 @@ class ClientsListVM: ViewModel() {
         viewModelScope.launch {
             _clientsResponse.value = repository.getClients(page,query)
         }
+    }
+
+    suspend fun getTotalClientCount(): Int {
+        return viewModelScope.async {
+            val clientsResponse = repository.getClients(1)
+            val totalPages = clientsResponse?.total_pages ?: 0
+            var clientCount = 0
+            for(i in 1..totalPages){
+                val response = repository.getClients(i)
+                clientCount += response?.clients?.size ?: 0
+            }
+            clientCount
+        }.await()
     }
 
     private fun loadClients(page: Int = currentPage) {

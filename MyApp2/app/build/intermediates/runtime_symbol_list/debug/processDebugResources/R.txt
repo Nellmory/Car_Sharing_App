@@ -3613,6 +3613,7 @@ int id startToEnd 0x7f0901e4
 int id startVertical 0x7f0901e5
 int id staticLayout 0x7f0901e6
 int id staticPostLayout 0x7f0901e7
+int id statisticsButton 0x7f090260
 int id status_bar_latest_event_content 0x7f0901e8
 int id stop 0x7f0901e9
 int id stretch 0x7f0901ea

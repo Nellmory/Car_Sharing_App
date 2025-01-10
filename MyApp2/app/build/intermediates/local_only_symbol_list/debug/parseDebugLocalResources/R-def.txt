@@ -81,6 +81,7 @@ id rentViolationList
 id rentsButton
 id saveButton
 id searchView
+id statisticsButton
 id tariffList
 id tariffsButton
 id textBrandName

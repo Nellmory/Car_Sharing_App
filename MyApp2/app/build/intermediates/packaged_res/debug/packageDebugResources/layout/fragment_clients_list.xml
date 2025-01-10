@@ -75,7 +75,7 @@
                 />
 
             <Button
-                android:id="@+id/filterButton"
+                android:id="@+id/statisticsButton"
                 android:layout_width="48dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="8dp"
@@ -84,7 +84,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 app:cornerRadius="7dp"
-                app:icon="@drawable/filter"
+                app:icon="@android:drawable/ic_menu_sort_by_size"
                 app:iconSize="30dp"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp" />

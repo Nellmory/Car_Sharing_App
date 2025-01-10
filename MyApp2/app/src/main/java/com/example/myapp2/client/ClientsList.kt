@@ -1,6 +1,7 @@
 package com.example.myapp2.client
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +18,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp2.Client
 import com.example.myapp2.ClientsResponse
 import com.example.myapp2.R
+import com.example.myapp2.RetrofitClient
 import com.example.myapp2.TableAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +34,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     ClientAdapter.OnSaveClick {
 
     private lateinit var repository: TableAdapter
+    private val apiService = RetrofitClient.api
     private lateinit var recyclerView: RecyclerView
     private lateinit var clientAdapter: ClientAdapter
     private val clientList = mutableListOf<Client>()
@@ -58,6 +65,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
         val addButton: Button = view.findViewById(R.id.addClientButton)
         searchView = view.findViewById(R.id.searchView)
         val goBackButton: Button = view.findViewById(R.id.goBack)
+        val statisticsButton: Button = view.findViewById(R.id.statisticsButton)
 
         progressBar = view.findViewById(R.id.progressBar)
 
@@ -93,6 +101,10 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
             findNavController().navigate(R.id.action_clientsList_to_activityHub)
         }
 
+        statisticsButton.setOnClickListener {
+            showStatisticsDialog()
+        }
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -113,6 +125,59 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
 
         return view
     }
+
+    private fun showStatisticsDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Вывести статистику?")
+            .setPositiveButton("Да") { _, _ ->
+                loadViolationStatistics()
+            }
+            .setNegativeButton("Нет", null)
+            .show()
+    }
+
+
+    private fun loadViolationStatistics() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val clientCount =  vm.getTotalClientCount()
+                val violations =  apiService.getViolations()
+                val violationCounts = violations.groupingBy { it.client_id }.eachCount()
+                val sortedViolators = violationCounts.entries.sortedByDescending { it.value }.take(10)
+                val resultString = buildString {
+                    append("Общее количество клиентов: $clientCount\n\n")
+                    append("Топ нарушителей:\n")
+                    sortedViolators.forEach { (clientId, count) ->
+                        append("Client ID: $clientId, Нарушений: $count\n")
+                    }
+                }
+                withContext(Dispatchers.Main){
+                    showStatisticsResult(resultString)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    showErrorDialog("Ошибка при загрузке статистики: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun showStatisticsResult(resultString: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Статистика")
+            .setMessage(resultString)
+            .setPositiveButton("Ок", null)
+            .show()
+    }
+
+    private fun showErrorDialog(message: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Ошибка")
+            .setMessage(message)
+            .setPositiveButton("Ок", null)
+            .show()
+    }
+
 
     private fun filterClients(query: String?) {
         clientList.clear()
@@ -139,7 +204,10 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
             clientList.addAll(newClients)
             clientAdapter.notifyDataSetChanged()
             currentPage++
-            Log.d("ClientsList", "Loaded new data, current page is incremented. Current page: $currentPage")
+            Log.d(
+                "ClientsList",
+                "Loaded new data, current page is incremented. Current page: $currentPage"
+            )
         }
         hasMoreData = response.has_next
         Log.d("API", "Current page: " + response.current_page)
@@ -158,7 +226,7 @@ class ClientsList : Fragment(), ClientAdapter.OnItemClickedDB,
     }
 
     override fun onSaveClick(id: Int, client: Client) {
-        vm.editClient(id,client)
+        vm.editClient(id, client)
         clientList.clear()
         currentPage = 1
     }

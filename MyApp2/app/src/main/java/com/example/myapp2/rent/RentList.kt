@@ -32,13 +32,14 @@ import java.util.Locale
 class RentList : Fragment(), RentAdapter.OnItemClickedDB,
     RentAdapter.OnSaveClick {
 
-    private lateinit var repository: TableAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var rentAdapter: RentAdapter
     private val rentList = mutableListOf<Rent>()
     private var isLoading = false
     private var hasMoreData = true
     private var currentPage = 1
+    private var startDateFilter: String? = null
+    private var finishDateFilter: String? = null
     private lateinit var searchView: SearchView
     private var currentSearchQuery: String? = null
     private val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -85,7 +86,7 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
 
                 if (!isLoading && hasMoreData) {
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
-                        loadRents()
+                        loadRents(null, startDateFilter, finishDateFilter)
                     }
                 }
             }
@@ -97,7 +98,6 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         goBackButton.setOnClickListener {
             findNavController().navigate(R.id.action_rentList_to_activityHub)
         }
-
         filterButton.setOnClickListener {
             showDateRangePicker()
         }
@@ -130,8 +130,8 @@ class RentList : Fragment(), RentAdapter.OnItemClickedDB,
         picker.addOnPositiveButtonClickListener { selection ->
             val startDate = Date(selection.first)
             val endDate = Date(selection.second)
-            val startDateFilter = outputFormat.format(startDate)
-            val finishDateFilter = outputFormat.format(endDate)
+            startDateFilter = outputFormat.format(startDate)
+            finishDateFilter = outputFormat.format(endDate)
             Log.e("RentList", "startDate: ${startDateFilter}, finishDate:${finishDateFilter}")
             filterRents(currentSearchQuery, startDateFilter, finishDateFilter)
         }

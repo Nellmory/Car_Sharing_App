@@ -3614,6 +3614,7 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id statisticsButton
 id status_bar_latest_event_content
 id stop
 id stretch

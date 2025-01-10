@@ -40,12 +40,12 @@
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-mdpi\\new_icon_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_car1.png.flat",
-        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\car1.png"
-    },
-    {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-xxxhdpi_new_icon_round.webp.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\mipmap-xxxhdpi\\new_icon_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_car1.png.flat",
+        "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\car1.png"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\layout_fragment_rent_violation_list.xml.flat",
@@ -142,6 +142,10 @@
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\drawable_road.jpg.flat",
         "source": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-main-53:\\drawable\\road.jpg"
+    },
+    {
+        "merged": "com.example.myapp2.app-debug-51:/layout_fragment_clients_list.xml.flat",
+        "source": "com.example.myapp2.app-main-53:/layout/fragment_clients_list.xml"
     },
     {
         "merged": "C:\\Users\\agapo\\.gradle\\daemon\\8.9\\com.example.myapp2.app-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
