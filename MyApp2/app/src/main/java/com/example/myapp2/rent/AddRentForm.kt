@@ -86,6 +86,7 @@ class AddRentForm : Fragment() {
         val tariff = tariffET.text.toString().toIntOrNull() ?: 0
         val car_id = carET.text.toString().toIntOrNull() ?: 0
         val client_id = clientET.text.toString().toIntOrNull() ?: 0
+
         return Rent(
             id = 0,
             start_date = start_date,

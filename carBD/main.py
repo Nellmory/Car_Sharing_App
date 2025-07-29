@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session, as_declarative, relationship, scoped_session
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 from markupsafe import escape
-from sqlalchemy_pagination import paginate
 
 engine = create_engine("sqlite:///carDB.db", echo=False)
 app = Flask(__name__)
