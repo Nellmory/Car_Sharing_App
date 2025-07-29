@@ -1,5 +1,7 @@
 MyApp2/.gradle
 MyApp2/app/build
-CarDB/.venv
-CarDB/carDB.db
+MyApp2/.idea
+CarBD/.idea
+CarBD/.venv
+CarBD/carDB.db
 carDB.db
