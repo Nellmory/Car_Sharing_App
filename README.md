@@ -18,27 +18,28 @@ Car Sharing App – эффективный инструмент для упра�
 
 ### Главный экран
 
-![WelcomePage](./readme-images/welcome_page.jpg)
+<img src="./readme-images/welcome_page.jpg" alt="WelcomePage" height="400px" />
 
 ### Меню выбора
 
-![menu](./readme-images/menu.jpg)
+<img src="./readme-images/menu.jpg" alt="menu" height="400px" />
+
 
 ### Внешний вид таблиц
 
-![table](./readme-images/example_tables.jpg)
+<img src="./readme-images/example_tables.jpg" alt="example_tables" height="400px" />
 
 ### Форма добавления клиента
 
-![forma](./readme-images/forma.jpg)
+<img src="./readme-images/forma.jpg" alt="forma" height="400px" />
 
 ### Фильтрация по дате
 
-![filter](./readme-images/filter.jpg)
+<img src="./readme-images/filter.jpg" alt="filter" height="400px" />
 
 ### Демонстрация работы поиска
 
-![search](./readme-images/search.jpg)
+<img src="./readme-images/search.jpg" alt="search" height="400px" />
 
 ## Стек
 -   **Frontend:** [Kotlin](https://kotlinlang.org/), [XML](https://www.w3.org/XML/), [Retrofit](https://square.github.io/retrofit/) 
